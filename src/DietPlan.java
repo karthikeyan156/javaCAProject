@@ -1,9 +1,21 @@
 package src;
-public class GeneticAlgorithm {
-    private GeneticAlgorithmStrategy strategy;
+public class DietPlan {
+    private static DietPlan instance;
+    private DietPlanStrategy strategy;
 
-    public GeneticAlgorithm(GeneticAlgorithmStrategy strategy) {
-        this.strategy = strategy;
+    // Private constructor
+    private DietPlan() {
+        this.strategy = new MyDietPlanStrategy();
+    }
+
+    // Public method to get the instance
+    //Synchronized used for thread safety 
+    public static synchronized DietPlan getInstance() {
+         // Singleton pattern: Check if instance is null and if so then it will create new instance
+        if (instance == null) {
+            instance = new DietPlan();
+        }
+        return instance;
     }
 
     public Population evolve(Population population) {

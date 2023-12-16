@@ -2,10 +2,10 @@ package src;
 public class Main {
     public static void main(String[] args) {
         // Define the genetic algorithm strategy
-        GeneticAlgorithmStrategy strategy = new MyGeneticAlgorithmStrategy(); // You need to define this class
+        // GeneticAlgorithmStrategy strategy = new MyGeneticAlgorithmStrategy(); // need to define this class
 
         // Create the genetic algorithm with the defined strategy
-        GeneticAlgorithm ga = new GeneticAlgorithm(strategy);
+        DietPlan ga =  DietPlan.getInstance();
 
         // Initialize population
         Population population = new Population(50); // Example size

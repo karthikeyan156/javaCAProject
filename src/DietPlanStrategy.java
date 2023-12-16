@@ -1,5 +1,5 @@
 package src;
-public interface GeneticAlgorithmStrategy {
+public interface DietPlanStrategy {
 
     void mutate(Individual individual);
     Individual crossover(Individual parent1, Individual parent2);

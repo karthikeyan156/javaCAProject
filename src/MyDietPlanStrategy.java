@@ -1,6 +1,6 @@
 package src;
 
-public class MyGeneticAlgorithmStrategy implements GeneticAlgorithmStrategy {
+public class MyDietPlanStrategy implements DietPlanStrategy {
     @Override
     public void mutate(Individual individual) {
         // Implementation of mutation logic
