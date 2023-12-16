@@ -5,10 +5,10 @@ public class Main {
         // GeneticAlgorithmStrategy strategy = new MyGeneticAlgorithmStrategy(); // need to define this class
 
         // Create the genetic algorithm with the defined strategy
-        GymMembers ga =  GymMembers.getInstance();
+        DietPlan ga =  DietPlan.getInstance();
 
         // Initialize population
-        BestBodyBuilder population = new BestBodyBuilder(50); // Example size
+        Population population = new Population(50); // Example size
         int generationCount = 0;
 
         // Evolution loop
@@ -25,7 +25,7 @@ public class Main {
         }
 
         // After the loop, you can display the final best solution
-        IndividualDiet bestIndividual = population.getFittest();
+        Individual bestIndividual = population.getFittest();
         System.out.println("Final Best Individual's Fitness: " + bestIndividual.calculateFitness());
         // Optionally, print details of the best individual's diet plan
     }

@@ -1,25 +1,25 @@
 package src;
-public class GymMembers {
-    private static GymMembers instance;
-    private Performer strategy;
+public class DietPlan {
+    private static DietPlan instance;
+    private DietPlanStrategy strategy;
 
     // Private constructor
-    private GymMembers() {
-        this.strategy = new TopPerformer();
+    private DietPlan() {
+        this.strategy = new MyDietPlanStrategy();
     }
 
     // Public method to get the instance
     //Synchronized used for thread safety 
-    public static synchronized GymMembers getInstance() {
+    public static synchronized DietPlan getInstance() {
          // Singleton pattern: Check if instance is null and if so then it will create new instance
         if (instance == null) {
-            instance = new GymMembers();
+            instance = new DietPlan();
         }
         return instance;
     }
 
-    public BestBodyBuilder evolve(BestBodyBuilder population) {
-        BestBodyBuilder newPopulation = new BestBodyBuilder(population.size());
+    public Population evolve(Population population) {
+        Population newPopulation = new Population(population.size());
 
         // Elitism: Keep the best individual
         newPopulation.saveIndividual(0, population.getFittest());
@@ -27,11 +27,11 @@ public class GymMembers {
         // Crossover and mutation
         for (int i = 1; i < population.size(); i++) {
             // Select parents
-            IndividualDiet parent1 = strategy.select(population);
-            IndividualDiet parent2 = strategy.select(population);
+            Individual parent1 = strategy.select(population);
+            Individual parent2 = strategy.select(population);
 
             // Crossover parents
-            IndividualDiet child = strategy.crossover(parent1, parent2);
+            Individual child = strategy.crossover(parent1, parent2);
 
             // Mutate the offspring
             strategy.mutate(child);
