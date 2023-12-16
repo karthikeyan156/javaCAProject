@@ -1,32 +1,32 @@
-package po;
-import java.util.ArrayList;
-import java.util.List;
-
+package src;
 public class Main {
     public static void main(String[] args) {
-        ShoppingCenter shoppingCenter = ShoppingCenter.getInstance();
-        shoppingCenter.addProduct("Laptop", 1000.0);
-        shoppingCenter.addProduct("Smartphone", 500.0);
+        // Define the genetic algorithm strategy
+        GeneticAlgorithmStrategy strategy = new MyGeneticAlgorithmStrategy(); // You need to define this class
 
-        // Create an initial population of customers
-        List<Customer> initialPopulation = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            initialPopulation.add(new Customer(Math.random() * 1000));
+        // Create the genetic algorithm with the defined strategy
+        GeneticAlgorithm ga = new GeneticAlgorithm(strategy);
+
+        // Initialize population
+        Population population = new Population(50); // Example size
+        int generationCount = 0;
+
+        // Evolution loop
+        while (generationCount < 100) { // Example condition
+            generationCount++;
+
+            // Evolve the population
+            population = ga.evolve(population);
+
+            // Display information about the population
+            System.out.println("Generation: " + generationCount);
+            System.out.println("Fittest Individual's Fitness: " + population.getFittest().calculateFitness());
+            // Optionally, you can print more details about the fittest individual or other statistics
         }
 
-        GeneticAlgorithm ga = new GeneticAlgorithm(initialPopulation);
-
-        // Run the genetic algorithm for a certain number of generations
-        for (int generation = 0; generation < 10; generation++) {
-            System.out.println("Generation: " + generation);
-            ga.selection(shoppingCenter);
-            ga.crossover();
-            ga.mutation();
-
-            // Optional: Output population details here
-            // e.g., print average budget of the population
-        }
-
-        // Optional: Final population analysis can be done here
+        // After the loop, you can display the final best solution
+        Individual bestIndividual = population.getFittest();
+        System.out.println("Final Best Individual's Fitness: " + bestIndividual.calculateFitness());
+        // Optionally, print details of the best individual's diet plan
     }
 }

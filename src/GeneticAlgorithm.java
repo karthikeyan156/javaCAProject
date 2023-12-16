@@ -1,45 +1,34 @@
-package po;
-import java.util.*;
-
+package src;
 public class GeneticAlgorithm {
-    private List<Customer> population;
+    private GeneticAlgorithmStrategy strategy;
 
-    public GeneticAlgorithm(List<Customer> initialPopulation) {
-        this.population = new ArrayList<>(initialPopulation);
+    public GeneticAlgorithm(GeneticAlgorithmStrategy strategy) {
+        this.strategy = strategy;
     }
 
-    // Selection: Select the top customers based on their fitness (spending)
-    public void selection(ShoppingCenter shoppingCenter) {
-        population.sort(Comparator.comparingDouble(customer -> customer.calculateFitness(shoppingCenter)).reversed());
-        population = new ArrayList<>(population.subList(0, population.size() / 2)); // Keep top 50%
-    }
+    public Population evolve(Population population) {
+        Population newPopulation = new Population(population.size());
 
-    // Crossover: Create new customers by combining traits of existing customers
-    public void crossover() {
-        List<Customer> newGeneration = new ArrayList<>();
-        for (int i = 0; i < population.size() - 1; i += 2) {
-            Customer parent1 = population.get(i);
-            Customer parent2 = population.get(i + 1);
+        // Elitism: Keep the best individual
+        newPopulation.saveIndividual(0, population.getFittest());
 
-            // Simple crossover: average of parents' budgets
-            double childBudget = (parent1.getBudget() + parent2.getBudget()) / 2;
-            newGeneration.add(new Customer(childBudget));
+        // Crossover and mutation
+        for (int i = 1; i < population.size(); i++) {
+            // Select parents
+            Individual parent1 = strategy.select(population);
+            Individual parent2 = strategy.select(population);
+
+            // Crossover parents
+            Individual child = strategy.crossover(parent1, parent2);
+
+            // Mutate the offspring
+            strategy.mutate(child);
+
+            // Add child to new population
+            newPopulation.saveIndividual(i, child);
         }
-        population.addAll(newGeneration);
+
+        return newPopulation;
     }
 
-    // Mutation: Introduce random changes to customer traits
-    public void mutation() {
-        for (Customer customer : population) {
-            if (Math.random() < 0.1) { // 10% chance of mutation
-                // Simple mutation: randomize budget within a range
-                customer.setBudget(customer.getBudget() * (0.8 + Math.random() * 0.4));
-            }
-        }
-    }
-
-    // Getters
-    public List<Customer> getPopulation() {
-        return population;
-    }
 }
