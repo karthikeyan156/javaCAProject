@@ -5,7 +5,7 @@ public class FitnessCalc {
     // Example target nutritional values
     private static final int[] targetNutrients = {50, 30, 20, 10, 40}; // Placeholder values
 
-    public static double getFitness(Individual individual) {
+    public static double getFitness(IndividualDiet individual) {
         int[] nutrients = individual.getNutrients();
         double fitness = 0.0;
 

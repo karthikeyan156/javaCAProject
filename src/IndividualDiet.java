@@ -1,12 +1,12 @@
 package src;
 import java.util.Random;
 
-public class Individual {
+public class IndividualDiet {
     private int[] nutrients;
     private static final int NUTRIENT_COUNT = 5; // Example, can be adjusted
     private static final int MAX_NUTRIENT_VALUE = 100; // Example upper limit
 
-    public Individual() {
+    public IndividualDiet() {
         nutrients = new int[NUTRIENT_COUNT];
         Random rand = new Random();
         // Randomly generate a diet plan
@@ -16,7 +16,7 @@ public class Individual {
     }
 
     // Copy constructor
-    public Individual(Individual other) {
+    public IndividualDiet(IndividualDiet other) {
         this.nutrients = other.nutrients.clone();
     }
 

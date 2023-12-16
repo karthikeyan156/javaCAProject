@@ -1,21 +1,21 @@
 package src;
-public class Population {
-    private Individual[] individuals;
+public class BestBodyBuilder {
+    private IndividualDiet[] individuals;
 
-    public Population(int size) {
-        individuals = new Individual[size];
+    public BestBodyBuilder(int size) {
+        individuals = new IndividualDiet[size];
         for (int i = 0; i < size; i++) {
-            individuals[i] = new Individual();
+            individuals[i] = new IndividualDiet();
         }
     }
 
     // Get the individual at a given index
-    public Individual getIndividual(int index) {
+    public IndividualDiet getIndividual(int index) {
         return individuals[index];
     }
 
     // Save an individual at a given index
-    public void saveIndividual(int index, Individual indiv) {
+    public void saveIndividual(int index, IndividualDiet indiv) {
         individuals[index] = indiv;
     }
 
@@ -25,8 +25,8 @@ public class Population {
     }
 
     // Get the fittest individual in the population
-    public Individual getFittest() {
-        Individual fittest = individuals[0];
+    public IndividualDiet getFittest() {
+        IndividualDiet fittest = individuals[0];
         for (int i = 1; i < size(); i++) {
             if (fittest.calculateFitness() < getIndividual(i).calculateFitness()) {
                 fittest = getIndividual(i);

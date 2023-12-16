@@ -2,13 +2,13 @@ package src;
 public class Main {
     public static void main(String[] args) {
         // Define the genetic algorithm strategy
-        GeneticAlgorithmStrategy strategy = new MyGeneticAlgorithmStrategy(); // You need to define this class
+        // GeneticAlgorithmStrategy strategy = new MyGeneticAlgorithmStrategy(); // need to define this class
 
         // Create the genetic algorithm with the defined strategy
-        GeneticAlgorithm ga = new GeneticAlgorithm(strategy);
+        GymMembers ga =  GymMembers.getInstance();
 
         // Initialize population
-        Population population = new Population(50); // Example size
+        BestBodyBuilder population = new BestBodyBuilder(50); // Example size
         int generationCount = 0;
 
         // Evolution loop
@@ -25,7 +25,7 @@ public class Main {
         }
 
         // After the loop, you can display the final best solution
-        Individual bestIndividual = population.getFittest();
+        IndividualDiet bestIndividual = population.getFittest();
         System.out.println("Final Best Individual's Fitness: " + bestIndividual.calculateFitness());
         // Optionally, print details of the best individual's diet plan
     }
