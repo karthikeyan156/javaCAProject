@@ -3,8 +3,9 @@ import java.util.Random;
 
 public class Individual {
     private int[] nutrients;
-    private static final int NUTRIENT_COUNT = 5; // Example, can be adjusted
-    private static final int MAX_NUTRIENT_VALUE = 100; // Example upper limit
+    private static final int[] targetNutrients = {50, 30, 20, 10, 40}; 
+    private static final int NUTRIENT_COUNT = 5; 
+    private static final int MAX_NUTRIENT_VALUE = 100; 
 
     public Individual() {
         nutrients = new int[NUTRIENT_COUNT];
@@ -22,25 +23,33 @@ public class Individual {
 
     // Getters
     public int[] getNutrients() {
-        return nutrients;
+        return nutrients.clone(); // Return a clone for encapsulation
     }
 
     // Setters
     public void setNutrients(int[] nutrients) {
-        this.nutrients = nutrients;
-    }
-
-    // Additional methods like mutate a single nutrient, etc.
-    public void mutateNutrient(int index, int value) {
-        if (index >= 0 && index < nutrients.length) {
-            nutrients[index] = value;
+        if (nutrients != null && nutrients.length == NUTRIENT_COUNT) {
+            this.nutrients = nutrients.clone(); // Clone for encapsulation
         }
     }
 
-    // You might also want a method to calculate fitness, or it can be in another class
+    // Mutate a single nutrient
+    public void mutateNutrient(int index, int value) {
+        if (index >= 0 && index < nutrients.length) {
+            nutrients[index] = Math.min(Math.max(value, 0), MAX_NUTRIENT_VALUE); // Ensure within valid range
+        }
+    }
+
+    // Calculate fitness
     public double calculateFitness() {
-        // Implement fitness calculation logic
-        // Placeholder
-        return 0.0;
+        double fitness = 0.0;
+
+        // Advanced fitness calculation: normalized inverse sum of squared differences
+        for (int i = 0; i < nutrients.length; i++) {
+            double normalizedDifference = (double)(nutrients[i] - targetNutrients[i]) / MAX_NUTRIENT_VALUE;
+            fitness += normalizedDifference * normalizedDifference;
+        }
+
+        return 1 / (1.0 + Math.sqrt(fitness)); // Squared root to normalize, then invert
     }
 }
