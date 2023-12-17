@@ -3,9 +3,9 @@ import java.util.Random;
 
 public class Individual {
     private int[] nutrients;
-    private static final int[] targetNutrients = {50, 30, 20, 10, 40}; 
-    private static final int NUTRIENT_COUNT = 5; 
-    private static final int MAX_NUTRIENT_VALUE = 100; 
+    private static final int[] targetNutrients = {52,35,20,10,40,70,60,55,95,15,25,67,89,23,45,12,46,7,18,5}; 
+    public final int NUTRIENT_COUNT = 20; 
+    public final int MAX_NUTRIENT_VALUE = 100; 
 
     public Individual() {
         nutrients = new int[NUTRIENT_COUNT];
