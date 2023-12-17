@@ -39,6 +39,10 @@ This document presents a detailed examination of a Java-based application, speci
 - **Operational Role**: Manages a collection of Individuals, each representing a potential diet plan, within the framework of a genetic algorithm.
 - **Functional Attributes**: Supports the initialization of a diverse population and provides mechanisms for accessing and modifying individual diet plans, crucial for the evolutionary process.
 
+#### Main (Main.java)
+- **Application Entry Point**: Orchestrates the use of the above components to run the genetic algorithm.
+- **Process Flow**: Involves initializing the algorithm, managing the evolution of diet plans across generations, and displaying results.
+
 ### System Functionality
 The system executes a genetic algorithm to methodically evolve diet plans towards optimization. It commences with a diverse population of diet plans, which are then subjected to evolutionary processes, including mutation, crossover, and selection. The aim is to refine these plans to align more closely with predetermined nutritional goals, evaluating their fitness against set benchmarks.
 
