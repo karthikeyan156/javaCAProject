@@ -1,1 +1,0 @@
-This folder contains documetation of the classes created in txt or md format
