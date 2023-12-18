@@ -3,28 +3,29 @@ public class Main {
     public static void main(String[] args) {
         // Define the genetic algorithm strategy
         // GeneticAlgorithmStrategy strategy = new MyGeneticAlgorithmStrategy(); // need to define this class
-        double[] fitnessArry =new double[10000];
+        double[] fitnessArry =new double[100];
             double fitnessCalc;
         // Create the genetic algorithm with the defined strategy
         Plan ga =  Plan.getInstance();
 
         // Initialize population
-        Population population = new Population(50); // Example size
+        Population population = new Population(5); // Example size
         int generationCount = 0;
 
         // Evolution loop
-        while (generationCount < 100) { // Example condition
+        while (generationCount < 5) { // Example condition
             generationCount++;
 
             // Evolve the population
             population = ga.evolve(population);
 
             // Display information about the population
+            System.out.println("Gnerating 5 random individuals for analysing their fitness:");
             System.out.println("Generation: " + generationCount);
             ConcreteIndividualFactory individualFitnessFactory = new ConcreteIndividualFactory();       
             fitnessCalc = individualFitnessFactory.createIndividualFitness().findFitness();;
             fitnessArry[generationCount]=fitnessCalc;
-            System.out.println("Fittest Individual's Fitness: " + fitnessCalc);
+            System.out.println("Individual's Fitness: " + fitnessCalc);
             // Optionally, you can print more details about the fittest individual or other statistics
         }
        
