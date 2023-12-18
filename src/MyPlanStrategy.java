@@ -2,7 +2,7 @@ package src;
 
 import java.util.Random;
 
-public class MyDietPlanStrategy implements DietPlanStrategy {
+public class MyPlanStrategy implements PlanStrategy {
     @Override
     public void mutate(Individual individual) {
         Random rand = new Random();

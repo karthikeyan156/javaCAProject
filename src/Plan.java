@@ -1,19 +1,19 @@
 package src;
-public class DietPlan {
-    private static DietPlan instance;
-    private DietPlanStrategy strategy;
+public class Plan {
+    private static Plan instance;
+    private PlanStrategy strategy;
 
     // Private constructor
-    private DietPlan() {
-        this.strategy = new MyDietPlanStrategy();
+    private Plan() {
+        this.strategy = new MyPlanStrategy();
     }
 
     // Public method to get the instance
     //Synchronized used for thread safety 
-    public static synchronized DietPlan getInstance() {
+    public static synchronized Plan getInstance() {
          // Singleton pattern: Check if instance is null and if so then it will create new instance
         if (instance == null) {
-            instance = new DietPlan();
+            instance = new Plan();
         }
         return instance;
     }
