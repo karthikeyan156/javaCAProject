@@ -41,15 +41,16 @@ public class Individual {
     }
 
     // Calculate fitness
-    public double calculateFitness() {
+    public double findFitness() {
         double fitness = 0.0;
 
         // Advanced fitness calculation: normalized inverse sum of squared differences
         for (int i = 0; i < nutrients.length; i++) {
             double normalizedDifference = (double)(nutrients[i] - targetNutrients[i]) / MAX_NUTRIENT_VALUE;
-            fitness += normalizedDifference * normalizedDifference;
+            fitness += normalizedDifference * normalizedDifference * new Random().nextInt(100);
         }
 
         return 1 / (1.0 + Math.sqrt(fitness)); // Squared root to normalize, then invert
     }
+
 }

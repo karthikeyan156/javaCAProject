@@ -38,7 +38,7 @@ public Individual select(Population population) {
 
     // Calculate the total fitness of the population
     for (int i = 0; i < population.size(); i++) {
-        totalFitness += population.getIndividual(i).calculateFitness();
+        totalFitness += population.getIndividual(i).findFitness();
     }
 
     // Generate a random value between 0 and the total fitness
@@ -47,7 +47,7 @@ public Individual select(Population population) {
     // Iterate through the population and select the individual that corresponds to the random value
     double cumulativeFitness = 0.0;
     for (int i = 0; i < population.size(); i++) {
-        cumulativeFitness += population.getIndividual(i).calculateFitness();
+        cumulativeFitness += population.getIndividual(i).findFitness();
         if (cumulativeFitness >= randomValue) {
             return population.getIndividual(i);
         }
