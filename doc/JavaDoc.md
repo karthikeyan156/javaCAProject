@@ -9,6 +9,7 @@ This document presents a detailed examination of a Java-based application, speci
 - **Singleton Design Pattern**: This class is implemented as a Singleton, ensuring a single, consistent instance throughout the application.
 - **Strategy Pattern Integration**: Incorporates a strategy pattern, signified by the `DietPlanStrategy` attribute, allowing for a variety of diet plan strategies to be employed.
 - **Thread Safety**: Employs a synchronized `getInstance()` method, guaranteeing thread safety during the creation of the Singleton instance.
+- **Factory Pattern** : Created two abstarct factory Individual and Cummualtive . Also create two concreate class that implements this interfaces. 
 
 #### DietPlanStrategy Interface (DietPlanStrategy.java)
 - **Interface Overview**: Defines the structural foundation for implementing various diet plan strategies.
