@@ -52,7 +52,6 @@ public class LowCarbDietStrategy implements DietPlanStrategy {
 
     @Override
     public String select() {
-        String[] foods ={};
         Random random = new Random();
         String[] foodlist = crossover();
         int i =random.nextInt(foodlist.length);
